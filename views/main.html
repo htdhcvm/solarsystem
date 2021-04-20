@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="image/favicon.ico?v=1.1"> 
+	<title>_SolarSystem</title>
+</head>
+<style>
+		body {
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+
+		@font-face{
+			font-family: 'RobotoMono';
+			src: url('font/WebFont.eot'),
+			url('font/Robotomono.woff') format('woff'),
+			url('font/Robotomono.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face{
+			font-family: 'RobotoItalic';
+			src: url('font/WebFont.eot'),
+			url('font/Robotomonothinitalic.woff') format('woff'),
+			url('font/Robotomonothinitalic.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face{
+			font-family: 'RobotoNothin';
+			src: url('font/WebFont.eot'),
+			url('font/Robotomonothin.woff') format('woff'),
+			url('font/Robotomonothin.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		canvas { 
+			width: 100%;
+			height: 100%;
+		}
+
+		p {
+			font-family: RobotoNothin;
+			color: #fefcff;
+			margin: 20px 0px 20px 0px;
+		}
+
+		#rules {
+			margin-top: 100px;
+			margin-right: 100px;
+			position: absolute;
+			right: 0;	
+			width: 470px;		
+		}
+
+		#header {
+			margin-right: 89px;
+    		margin-top: 99px;
+			cursor: pointer;
+			position: absolute;
+			right: 0;
+			font-family: RobotoNothin;
+			color: #fefcff;
+			font-size: 36px;
+			text-align: right;
+			letter-spacing: .4em;
+		}
+		
+		#exit {
+			width: 36px;
+			height: 36px;
+			cursor: pointer;
+			background-image: url('image/exit.png');
+		}
+		#exitInforamtion {
+			width: 36px;
+			height: 36px;
+			cursor: pointer;
+			background-image: url('image/exit.png');
+			float: right;
+		}
+		.diveder{
+			width: 100%;
+			height: 2px;
+			background-color: #f65a3d;
+			margin-bottom: 20px;
+		}
+		.error {
+			/*display: none;*/
+		}
+		.italic {
+			font-family: RobotoItalic;
+		}
+
+		.footer input {
+
+		}
+
+		input {
+			outline:none;
+		}
+		input:active {
+			outline:none;
+		}
+		.footer input {
+			border: none;
+    		padding: 10px 5px 10px 5px;
+			font-family: RobotoNothin;
+		}
+		   
+		.footer button {
+			font-family: RobotoNothin;
+			background-color: #f65a3d;
+			color: white;
+			border: none;
+			padding: 10px;
+		}
+
+		.footer .info {
+			color: white;
+			font-family: RobotoNothin;
+		}
+
+		.footer #error {
+			display: none;
+			background-color: #8b001e;
+			width: 240px;
+			text-align: center;
+			padding: 10px 0px 10px 0px;
+			color: white;
+			font-family: RobotoNothin;
+		}
+
+		#informationPlanet{
+			position: absolute;
+			width: 400px;
+			background-color: #f65a3d;
+			padding: 40px 20px 40px 20px;
+			top: 60px;
+			display: none;
+		}
+
+		#informationPlanet #headerInf {
+			color: white;
+			font-family:  RobotoNothin;
+			text-transform: uppercase;
+			font-size: 36px;
+			margin-bottom: 20px;
+		}
+
+		#informationPlanet #text {
+			color: white;
+			font-family:  RobotoNothin;	
+			letter-spacing: .2em;		
+		}
+</style>
+<body>
+	<audio id="music" src="music/theXX-intro.mp3" autoplay loop>
+ 		<source src="music/theXX-intro.mp3" autoplay>
+	</audio> 
+
+
+	<h1 id="header">_SolarSystem</h1>
+	<!-- <audio id="audio" src="music/theXX-intro.mp3"></audio> -->
+	<div id="rules">
+		<div id="exit"></div>
+		<p>1. Нажмите на планету что бы получить подробную информацию.</p>
+		<!-- <p class="italic">&nbsp;&nbsp;&nbsp;При нажатии на пустое место в космосе информация о планете закроется.</p> -->
+		<p>2. При нажатии на крестик будет закрыта информация о планете.</p>
+		<p>3. Используя <b>колесико на мышке</b> можно <b>приблежать и отдалять</b> солнечную систему.</p>
+		<p>4. Двигая мышкой можно смещать центр обзора камеры.</p>
+		<p>5. При нажатии на надпись _SolarSystem появится справочная информация.</p>
+		<p>6. Так же вы можете ускорять движение планет или вернуться к первоначальной скорости введя "0".</p>
+
+		<div class="diveder"></div>
+		<div class="footer">
+			<input type="text" id="changeSpeedPlanet">
+			<button id="change"> Изменить </button>
+			<p class="info"> Введите число на сколько вы хотите ускорить планеты </p>
+			<div id="error">Ошибка: Введите число</div> 
+		</div>
+	</div>
+
+	<div id="informationPlanet">
+		<div id="exitInforamtion"></div>
+		<div id="headerInf"></div>
+		<div id="text"></div>
+	</div>
+
+
+
+</body>
+
+<script src="/modules/three/build/three.min.js"></script>
+<script src="/modules/three/examples/js/controls/OrbitControls.js"></script>
+<script src="/js/main.js"></script>
+
+</html>
